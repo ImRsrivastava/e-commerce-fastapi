@@ -1,0 +1,60 @@
+`python -m venv py-env`
+    Purpose: This command is used to create a virtual environment called py-env.
+    Explanation:
+        *   The python -m venv module is used to create a virtual environment in Python.
+        *   py-env is the name of the environment you're creating. You can choose any name you prefer.
+        *   A virtual environment is a self-contained directory that contains a specific version of Python and its packages, ensuring that your project dependencies don't interfere with system-wide Python packages.
+    Usage: Run this command in your project directory to set up an isolated environment for your FastAPI project.
+-----------------------------------------------------
+
+`source py-env/bin/activate`
+    Purpose: This command activates the virtual environment.
+    Explanation:
+        *   source is a shell command that executes a script (in this case, activate) in the current shell environment.
+        *   py-env/bin/activate is the path to the activate script inside the bin folder of your virtual environment.
+        *   When you activate the virtual environment, it modifies your environment variables, specifically the PATH, so that any Python or pip commands you run will use the version inside the virtual environment instead of the global system version.
+    Usage: You should run this command each time you start working on the project. It ensures that any Python packages installed will be contained within your virtual environment.
+-----------------------------------------------------
+
+`pip install fastapi`
+    Purpose: This command installs the FastAPI framework.
+    Explanation:
+        *   pip is the Python package installer.
+        *   install fastapi tells pip to download and install the FastAPI framework from the Python Package Index (PyPI) and add it to your virtual environment.
+    Usage: FastAPI is the core library you need to build APIs with Python. You only need to run this once to install the framework.
+-----------------------------------------------------
+
+`pip install uvicorn`
+    Purpose: This command installs uvicorn, which is an ASGI server that serves your FastAPI application.
+    Explanation:
+        *   uvicorn is a lightning-fast ASGI server that is recommended for running FastAPI applications in production.
+        *   FastAPI itself is an ASGI-based framework, so an ASGI server like uvicorn is needed to run and serve your app.
+    Usage: You'll need uvicorn to run your FastAPI server.
+-----------------------------------------------------
+
+`pip list`
+    Purpose: This command lists all the installed Python packages in the current environment.
+    Explanation:
+        *   After installing FastAPI and uvicorn, pip list will show you all the installed packages, including their versions, in the current virtual environment.
+        *   It's a way to check that everything installed correctly and to see what dependencies your project has.
+    Usage: You can run this after installing packages to verify that they were installed successfully.
+-----------------------------------------------------
+
+`pip install sqlalchemy`
+    SQLAlchemy is a Python ORM (Object Relational Mapper) and SQL toolkit used to interact with databases using Python objects instead of writing raw SQL. It is a bridge between Python and your database. It helps you talk to the database using Python code.
+    Why we use it: 
+        To connect Python apps (FastAPI, Flask, etc.) with databases.
+        To define database tables as Python classes.
+        To run SQL queries using Python code.
+        To avoid writing repetitive SQL queries.
+        To support multiple databases like MySQL, PostgreSQL, SQLite, SQL Server, Oracle.
+
+-----------------------------------------------------
+
+`pip install psycopg2`
+`pip install pymysql`
+
+<!-- Package for Password hashing -->
+`pip install passlib`
+`pip install bcrypt==4.0.1`  <!-- This version 4.0.1 is always need to use, It a compatible version for Password Hashing in fastapi, if you are using passlib -->
+`pip install python-multipart`
