@@ -1,10 +1,8 @@
 # E-Commerce FastAPI Backend
-
 This project is a modular backend system built using FastAPI, designed to simulate a real-world e-commerce service. It follows clean architecture principles with separation of concerns across routes, schemas, services, models, core configuration, and utility helpers. The goal of this project is to provide a production-ready API structure suitable for learning, resume showcase, and future expansion.
 
----------------------------------------------------------
-MODULE-WISE OVERVIEW
----------------------------------------------------------
+
+# MODULE-WISE OVERVIEW
 1. Authentication Module
 Handles user registration and login functionality using JWT-based authentication. Includes secure password hashing, token generation, and token verification. Ensures users can safely access protected routes without using RBAC at this stage.
 
@@ -39,43 +37,40 @@ Defines public API endpoints for the application. Routes are modularized per fea
 10. Utils Module
 Provides reusable helper utilities such as image handling, pagination helpers, and custom response formatting. These utilities keep the main business logic clean and organized.
 
----------------------------------------------------------
+
 # API Endpoints Overview
----------------------------------------------------------
-Authentication Endpoints
-    - POST /users/register : Register a new user
-    - POST /users/login : Generate JWT token for authentication
-    - GET /users/me : Retrieve the authenticated user profile
+Authentication Endpoints:
+    - POST /users/register : Register a new user.
+    - POST /users/login : Generate JWT token for authentication.
+    - GET /users/me : Retrieve the authenticated user profile.
 
-User Endpoints
-    - GET /users : List all users (optional)
-    - GET /users/me : Get currently logged-in user details
+User Endpoints:
+    - GET /users : List all users.
+    - GET /users/me : Get currently logged-in user details.
 
-Product Endpoints
-    - GET /products : List all products (supports search, filter, pagination)
-    - GET /products/{id} : Retrieve product by ID
-    - POST /products : Create a new product
-    - PUT /products/{id} : Update an existing product
-    - DELETE /products/{id} : Soft delete a product
-    - POST /products/{id}/upload-image : Upload product image
+Product Endpoints:
+    - GET /products : List all products (supports search, filter, pagination).
+    - GET /products/{id} : Retrieve product by ID.
+    - POST /products : Create a new product.
+    - PUT /products/{id} : Update an existing product.
+    - DELETE /products/{id} : Soft delete a product.
+    - POST /products/{id}/upload-image : Upload product image.
 
-Category Endpoints
-    - GET /categories : List all categories
-    - POST /categories : Create a category
-    - PUT /categories/{id} : Update category information
-    - DELETE /categories/{id} : Remove a category
+Category Endpoints:
+    - GET /categories : List all categories.
+    - POST /categories : Create a category.
+    - PUT /categories/{id} : Update category information.
+    - DELETE /categories/{id} : Remove a category.
 
 This API follows a clean and modular approach with separated layers for routes, services, schemas, and database models. All endpoints return structured responses and use Pydantic-based validation to enforce payload integrity.
 
----------------------------------------------------------
+
 # PROJECT SUMMARY
----------------------------------------------------------
 This project is a modular FastAPI backend designed to simulate a real e-commerce system. It includes user authentication, product and category  management, image uploads, and strict data validation using Pydantic. SQLAlchemy ORM is used for database modeling, with clean service-layer logic for scalability. The project follows production-style practices, making it ideal for learning FastAPI, understanding backend architecture, and showcasing on a resume or GitHub portfolio.
 
----------------------------------------------------------
+
 # AUTHOR
----------------------------------------------------------
-Im@Rsrivastava
-Backend Engineer
+    Im@Rsrivastava,
+    Backend Engineer
 
 

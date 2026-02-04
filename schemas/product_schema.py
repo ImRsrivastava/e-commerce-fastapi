@@ -4,9 +4,10 @@ from pydantic import BaseModel
 class ProductSchema(BaseModel):
     shop_id: int
     category_id: int
+    auth_id: int
     name: str
     description: str
     price: float
     stock: int
+    image_url: str
     is_active: bool
-    created_by: int
