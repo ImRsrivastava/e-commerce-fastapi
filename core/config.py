@@ -9,7 +9,10 @@ class Settings (BaseSettings):
     JWT_ALGORITHM: str
     ACCESS_TOKEN_EXPIRE_MINUTES: int
 
+    PROJECT_AUTHOR: str | None = None
+
     class Config:
         env_file = ".env"
+        extra = "allow"
 
 settings = Settings()

@@ -18,4 +18,9 @@ __pycache__/
 .DS_Store
 
 # .git config
-.git/ 
+.git/
+docker/postgres/data/*
+!.gitkeep
+
+docker/mysql/data/*
+!.gitkeep

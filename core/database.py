@@ -20,4 +20,4 @@ def get_db():
     finally:
         db.close()
 
-DB_Dependency = Annotated[ Session, Depends(get_db())]
+DB_Dependency = Annotated[ Session, Depends(get_db)]
