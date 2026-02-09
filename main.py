@@ -1,9 +1,9 @@
 from fastapi import FastAPI, Request
 from core.database import engine, Base
-from models import auth_model, categories_model, shop_model, products_model
+from models import auth_model, category_model, shop_model, product_model
 from fastapi.responses import JSONResponse
 from sqlalchemy.exc import IntegrityError, SQLAlchemyError
-from routes import auth_route
+from routes import auth_route, category_route
 
 
 Base.metadata.create_all ( bind = engine )
@@ -52,3 +52,4 @@ async def global_exception_handler(request: Request, exc: Exception) -> JSONResp
 # 🟦 ROUTES
 # -------------------------------
 app.include_router( auth_route.router )
+app.include_router( category_route.router )

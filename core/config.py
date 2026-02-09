@@ -8,6 +8,7 @@ class Settings (BaseSettings):
     JWT_SECRET: str
     JWT_ALGORITHM: str
     ACCESS_TOKEN_EXPIRE_MINUTES: int
+    JWT_TOKE_URL: str
 
     PROJECT_AUTHOR: str | None = None
 

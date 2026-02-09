@@ -1,0 +1,32 @@
+version: "3.9"
+services:
+    api:
+        build: .
+        container_name: fastapi_app
+        ports:
+            -   "${DOCKER_APP_HOST_PORT}:8000"
+        env_file:
+            -   .env
+        depends_on:
+            -   db
+        networks:
+            -   backend
+
+    db:
+        image: postgres:15
+        container_name: fastapi_db
+        env_file:
+            -   .env
+        ports:
+            -   "${DOCKER_POSTGRES_SQL_HOST_PORT}:5432"
+        volumes:
+            -   ${DOCKER_VOLUME}:/var/lib/postgresql/data
+        networks:
+            -   backend
+        restart: always
+
+networks:
+    backend:
+        driver:
+            bridge
+

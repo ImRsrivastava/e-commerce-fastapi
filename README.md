@@ -2,7 +2,7 @@
 This project is a modular backend system built using FastAPI, designed to simulate a real-world e-commerce service. It follows clean architecture principles with separation of concerns across routes, schemas, services, models, core configuration, and utility helpers. The goal of this project is to provide a production-ready API structure suitable for learning, resume showcase, and future expansion.
 
 
-# MODULE-WISE OVERVIEW
+# Module Wise Overview
 1. Authentication Module
 Handles user registration and login functionality using JWT-based authentication. Includes secure password hashing, token generation, and token verification. Ensures users can safely access protected routes without using RBAC at this stage.
 
@@ -47,10 +47,6 @@ Authentication Endpoints:
    - POST /users/login : Generate JWT token for authentication.
    - GET /users/me : Retrieve the authenticated user profile.
 
-User Endpoints:
-   - GET /users : List all users.
-   - GET /users/me : Get currently logged-in user details.
-
 Product Endpoints:
    - GET /products : List all products (supports search, filter, pagination).
    - GET /products/{id} : Retrieve product by ID.
@@ -64,7 +60,7 @@ Category Endpoints:
    - POST /categories : Create a category.
    - PUT /categories/{id} : Update category information.
    - DELETE /categories/{id} : Remove a category.
-   - 
+
 Shop Endpoints:
    - GET /shops : List all shops.
    - POST /shops : Create a shop.
@@ -79,7 +75,7 @@ This project is a modular FastAPI backend designed to simulate a real e-commerce
 
 
 # AUTHOR
-- Im@Rsrivastava
-- Backend Engineer
+Im@Rsrivastava
+Backend Engineer
 
 

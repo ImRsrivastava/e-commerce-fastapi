@@ -58,3 +58,4 @@
 `pip install passlib`
 `pip install bcrypt==4.0.1`  <!-- This version 4.0.1 is always need to use, It a compatible version for Password Hashing in fastapi, if you are using passlib -->
 `pip install python-multipart`
+pip install python-jose[cryptography]

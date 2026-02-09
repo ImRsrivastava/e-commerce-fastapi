@@ -1,8 +1,12 @@
 from pydantic import BaseModel
 
 
-class CategorySchema (BaseModel):
+class CategoryCreateSchema (BaseModel):
     name: str
     description: str
-    is_active: bool
+    is_active: bool = True
     created_by: int
+
+class CategoryUpdateSchema (BaseModel):
+    name: str
+    description: str

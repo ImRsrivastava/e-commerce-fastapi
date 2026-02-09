@@ -1,9 +1,13 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, EmailStr
 
-class AuthSchema (BaseModel):
+class AuthRegisterSchema (BaseModel):
     first_name: str
     last_name: str
     full_name: str
-    email: str
+    email: EmailStr
     password: str
-    is_active: bool
+    is_active: bool = True
+
+class AuthLoginSchema (BaseModel):
+    email: EmailStr
+    password: str
