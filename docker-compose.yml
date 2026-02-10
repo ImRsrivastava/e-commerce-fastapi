@@ -8,25 +8,34 @@ services:
         env_file:
             -   .env
         depends_on:
-            -   db
+            db:
+                condition: service_healthy
         networks:
-            -   backend
+            -   ecommerce_backend
 
     db:
         image: postgres:15
         container_name: fastapi_db
         env_file:
             -   .env
+        environment:
+            POSTGRES_USER: ${DOCKER_POSTGRES_SQL_USERNAME}
+            POSTGRES_PASSWORD: ${DOCKER_POSTGRES_SQL_PASSWORD}
+            POSTGRES_DB: ${DOCKER_POSTGRES_SQL_DATABASE}
         ports:
             -   "${DOCKER_POSTGRES_SQL_HOST_PORT}:5432"
         volumes:
             -   ${DOCKER_VOLUME}:/var/lib/postgresql/data
         networks:
-            -   backend
+            -   ecommerce_backend
         restart: always
+        healthcheck:
+            test: [ "CMD-SHELL", "pg_isready -U ${DOCKER_POSTGRES_SQL_USERNAME}" ]
+            interval: 10s
+            timeout: 5s
+            retries: 5
 
 networks:
-    backend:
+    ecommerce_backend:
         driver:
             bridge
-
