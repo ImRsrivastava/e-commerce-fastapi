@@ -1,10 +1,9 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, EmailStr
 
 # Shop will be belongs to auth id, one auth user can have multiple shops.
-class ShopSchema (BaseModel):
+class ShopCreateSchema (BaseModel):
     name: str
-    email: float
-    owner: int
+    email: EmailStr
     address: str
     contact: int
     is_active: bool
