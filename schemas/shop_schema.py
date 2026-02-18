@@ -5,5 +5,14 @@ class ShopCreateSchema (BaseModel):
     name: str
     email: EmailStr
     address: str
-    contact: int
+    contact: str
+    is_active: bool
+
+class ShopUpdateSchema (BaseModel):
+    name: str
+    email: EmailStr
+    address: str
+    contact: str
+
+class ShopStatusUpdateSchema (BaseModel):
     is_active: bool
