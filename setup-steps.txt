@@ -59,3 +59,14 @@
 `pip install bcrypt==4.0.1`  <!-- This version 4.0.1 is always need to use, It a compatible version for Password Hashing in fastapi, if you are using passlib -->
 `pip install python-multipart`
 pip install python-jose[cryptography]
+
+
+# Alembic migration steps:
+Generate new fresh file:
+    `alembic revision -m "Add products table"`
+
+Run migration file:
+    `alembic upgrade <revision-id>`
+    `alembic upgrade 3940ade2dbbe`
+
+Note: You will get the `revision id` from the migration file itself.

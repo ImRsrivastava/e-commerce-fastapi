@@ -20,9 +20,11 @@ class ProductModel (Base):
     name        =   Column ( String(150), nullable = True )
     description =   Column ( Text, nullable = True )
     price       =   Column ( Float, nullable = False, default = 0.00 )
-    stock       =   Column ( Integer, default = 0, index = True )
-    image_url   =   Column ( String(255), nullable = True )
+    stock       =   Column ( Integer, default = 0 )
+
     is_active   =   Column ( Boolean, default = True )
     created_at  =   Column ( DateTime, default = datetime.utcnow )
     updated_at  =   Column ( DateTime, default = datetime.utcnow, onupdate = datetime.utcnow )
+
+    images      =   relationship("ProductImageModel", back_populates = "product", cascade = "all, delete-orphan" )
 
