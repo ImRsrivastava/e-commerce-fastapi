@@ -4,6 +4,7 @@ from core.database import DB_Dependency
 from services.common_service import Auth_Dependency
 from utils.response import success
 from schemas.product_schema import ProductCreateSchema, ProductUpdateSchema, ProductImageSchema
+from services.product_service import ProductService
 
 
 router = APIRouter(
@@ -17,7 +18,7 @@ router = APIRouter(
 async def get_all_products ( db: DB_Dependency, auth: Auth_Dependency ):
     if auth is None:
         raise HTTPException(status_code = status.HTTP_401_UNAUTHORIZED, detail="Unauthorized access!")
-    products = None
+    products = ProductService.get_all_products( db, auth )
     return success( "All Products retrieved successfully", products )
 
 
@@ -26,11 +27,11 @@ async def get_all_products ( db: DB_Dependency, auth: Auth_Dependency ):
 async def create_product ( db: DB_Dependency, auth: Auth_Dependency, product_req: ProductCreateSchema ):
     if auth is None:
         raise HTTPException(status_code = status.HTTP_401_UNAUTHORIZED, detail="Unauthorized access!")
-    product = None
-    return success( "Product created successfully" )
+    product = ProductService.create_product( db, auth, product_req )
+    return success( "Product created successfully", product )
 
 
-# POST    /product/{}/upload_image                  → Upload product
+# POST    /product/{product_id}/upload_image                  → Upload product
 @router.post( "/product/{product_id}/upload_image", status_code= status.HTTP_201_CREATED )
 async def upload_images ( db: DB_Dependency, auth: Auth_Dependency, image_req: ProductImageSchema ):
     if auth is None:

@@ -6,24 +6,17 @@ class CategoriesService:
 
     @staticmethod
     def get_categories ( db, auth ):
-        if auth is None:
-            raise HTTPException( status_code = status.HTTP_401_UNAUTHORIZED, detail = "Unauthorized access!" )
         categories = db.query(CategoriesModel).filter(CategoriesModel.created_by == auth.id).all()
         return categories
 
     @staticmethod
     def get_category_by_name ( db, auth, category_name ):
-        if auth is None:
-            raise HTTPException( status_code = status.HTTP_401_UNAUTHORIZED, detail = "Unauthorized access!" )
         category = db.query(CategoriesModel).filter( CategoriesModel.name.ilike(f"%{category_name}%") ).first()
         return category
 
     @staticmethod
     def create_category ( db, auth, category_req ):
         data = category_req.dict()
-        if auth is None:
-            raise HTTPException( status_code = status.HTTP_401_UNAUTHORIZED, detail = "Unauthorized access!" )
-
         if db.query(CategoriesModel).filter(CategoriesModel.name == category_req.name).first():
             raise HTTPException( status_code = status.HTTP_409_CONFLICT, detail = "Category with this name, already exists" )
 
@@ -37,8 +30,6 @@ class CategoriesService:
 
     @staticmethod
     def update_category ( db, auth, category_id, category_req ):
-        if auth is None:
-            raise HTTPException( status_code = status.HTTP_401_UNAUTHORIZED, detail = "Unauthorized access!" )
         category = db.query(CategoriesModel).filter(CategoriesModel.id == category_id).filter(CategoriesModel.created_by == auth.id).first()
         if category is None:
             raise HTTPException( status_code = status.HTTP_404_NOT_FOUND, detail = "Category not found!" )
@@ -53,8 +44,6 @@ class CategoriesService:
 
     @staticmethod
     def delete_category ( db, auth, category_id ):
-        if auth is None:
-            raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail = "Unauthorized access!")
         category = db.query(CategoriesModel).filter(CategoriesModel.id == category_id).filter(
             CategoriesModel.created_by == auth.id).first()
         if category is None:

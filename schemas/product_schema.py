@@ -4,12 +4,11 @@ from pydantic import BaseModel
 class ProductCreateSchema(BaseModel):
     shop_id: int
     category_id: int
-    auth_id: int
     name: str
     description: str
     price: float
     stock: int
-    is_active: bool
+    is_active: bool = True
 
 
 class ProductUpdateSchema (BaseModel):

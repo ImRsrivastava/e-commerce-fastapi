@@ -12,37 +12,52 @@ router = APIRouter(
     tags = ["Category-Routes"]
 )
 
+
 # GET ALL CATEGORIES LIST
 @router.get( "/", status_code = status.HTTP_200_OK )
 async def get_all_categories ( db: DB_Dependency, auth: Auth_Dependency ):
+    if auth is None:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Unauthorized access!")
     categories = CategoriesService.get_categories( db, auth )
     if not categories:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail = "Category not found.")
     return success( "All categories retrieved successfully.", categories )
 
+
 # GET CATEGORIES BY CATEGORY NAME
 @router.get( "/{category_name}", status_code = status.HTTP_200_OK )
 async def get_category_by_name ( db: DB_Dependency, auth: Auth_Dependency, category_name: str ):
+    if auth is None:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Unauthorized access!")
     category = CategoriesService.get_category_by_name( db, auth, category_name )
     if not category:
         raise HTTPException ( status_code = status.HTTP_404_NOT_FOUND, detail = "Category not found." )
     return success( "Category successfully fetched using the name", category )
 
+
 # CREATE NEW CATEGORY
 @router.post( "/",  status_code = status.HTTP_201_CREATED )
 async def create_category ( db: DB_Dependency, auth: Auth_Dependency, category_req: CategoryCreateSchema ):
+    if auth is None:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Unauthorized access!")
     category = CategoriesService.create_category( db, auth, category_req )
     return success( "Category created successfully", category )
+
 
 # UPDATE CATEGORY INFORMATION
 @router.put('/{category_id}', status_code = status.HTTP_204_NO_CONTENT )
 async def update_category ( db: DB_Dependency, auth: Auth_Dependency, category_id: int, category_req: CategoryUpdateSchema ):
+    if auth is None:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Unauthorized access!")
     category = CategoriesService.update_category( db, auth, category_id, category_req )
     return success( "Category updated successfully", category )
+
 
 # DELETE CATEGORY INFORMATION
 @router.delete('/{category_id}', status_code = status.HTTP_204_NO_CONTENT )
 async def delete_category ( db: DB_Dependency, auth: Auth_Dependency, category_id: int ):
+    if auth is None:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Unauthorized access!")
     category = CategoriesService.delete_category( db, auth, category_id)
     return success( "Category deleted successfully", True )
 

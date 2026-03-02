@@ -6,7 +6,7 @@ class ShopCreateSchema (BaseModel):
     email: EmailStr
     address: str
     contact: str
-    is_active: bool
+    is_active: bool = True
 
 class ShopUpdateSchema (BaseModel):
     name: str
