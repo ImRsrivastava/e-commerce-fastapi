@@ -9,10 +9,10 @@ class ProductModel (Base):
 
     id          =   Column ( Integer, primary_key = True, index = True )
     shop_id     =   Column ( Integer, ForeignKey("shops.id") )
-    shop        =   relationship('ShopModel')
+    shop        =   relationship('ShopModel', lazy="selectin")
 
     category_id =   Column ( Integer, ForeignKey("categories.id") )
-    category    =   relationship('CategoriesModel')
+    category    =   relationship('CategoriesModel', lazy="selectin")
 
     auth_id     =   Column ( Integer, ForeignKey("auths.id") )
     auth        =   relationship('AuthModel')
@@ -26,5 +26,5 @@ class ProductModel (Base):
     created_at  =   Column ( DateTime, default = datetime.utcnow )
     updated_at  =   Column ( DateTime, default = datetime.utcnow, onupdate = datetime.utcnow )
 
-    images      =   relationship("ProductImageModel", back_populates = "product", cascade = "all, delete-orphan" )
+    images      =   relationship("ProductImageModel", back_populates = "product", cascade = "all, delete-orphan", lazy="selectin" )
 

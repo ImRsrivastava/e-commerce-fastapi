@@ -11,8 +11,6 @@ class ProductImageModel (Base):
     product     =   relationship("ProductModel", back_populates = "images" )
 
     image_url   =   Column ( String(200), nullable = True )
-    create_at   =   Column ( DateTime, default = datetime.utcnow )
-    update_at   =   Column ( DateTime, default = datetime.utcnow, onupdate = datetime.utcnow )
-
-
+    created_at  =   Column ( DateTime, default = datetime.utcnow )
+    updated_at  =   Column ( DateTime, default = datetime.utcnow, onupdate = datetime.utcnow )
 

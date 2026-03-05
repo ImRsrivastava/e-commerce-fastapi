@@ -24,3 +24,5 @@ docker/postgres/data/*
 
 docker/mysql/data/*
 !.gitkeep
+
+uploads/*

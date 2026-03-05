@@ -18,7 +18,6 @@ class ProductUpdateSchema (BaseModel):
     description: str
     price: float
     stock: int
-    image_url: str
 
 class ProductImageSchema (BaseModel):
     image_url: str
